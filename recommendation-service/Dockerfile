@@ -7,11 +7,11 @@ EXPOSE 8081
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG TARGETARCH
 WORKDIR /src
-COPY ["recommentation-service/recommentation-service.csproj", "recommentation-service/"]
-RUN dotnet restore "recommentation-service/recommentation-service.csproj" -a $TARGETARCH
+COPY ["recommendation-service/recommendation-service.csproj", "recommendation-service/"]
+RUN dotnet restore "recommendation-service/recommendation-service.csproj" -a $TARGETARCH
 COPY . .
-WORKDIR "/src/recommentation-service"
-RUN dotnet build "recommentation-service.csproj" -c Release -o /app/build -a $TARGETARCH
+WORKDIR "/src/recommendation-service"
+RUN dotnet build "recommendation-service.csproj" -c Release -o /app/build -a $TARGETARCH
 
 FROM build AS publish
 RUN apt-get update -yq \
@@ -21,9 +21,9 @@ RUN apt-get update -yq \
     && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
     && apt-get update -yq \
     && apt-get install nodejs -yq
-RUN dotnet publish "recommentation-service.csproj" -c Release -o /app/publish -a $TARGETARCH
+RUN dotnet publish "recommendation-service.csproj" -c Release -o /app/publish -a $TARGETARCH
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "recommentation-service.dll"]
+ENTRYPOINT ["dotnet", "recommendation-service.dll"]
