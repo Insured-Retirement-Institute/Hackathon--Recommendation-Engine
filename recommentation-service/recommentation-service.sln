@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "conversation-service", "conversation-service.csproj", "{36CEB9EF-EC92-61FC-048D-C6425241681B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36CEB9EF-EC92-61FC-048D-C6425241681B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36CEB9EF-EC92-61FC-048D-C6425241681B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36CEB9EF-EC92-61FC-048D-C6425241681B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36CEB9EF-EC92-61FC-048D-C6425241681B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11661FA1-C83B-470A-AA4B-672E4A969A51}
+	EndGlobalSection
+EndGlobal
