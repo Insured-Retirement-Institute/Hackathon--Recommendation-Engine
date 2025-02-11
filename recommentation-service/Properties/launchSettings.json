@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "conversation-service": {
+    "recommendation-service": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
