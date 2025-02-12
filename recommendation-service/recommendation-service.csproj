@@ -7,9 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Data\Templates\ReasonQuestion.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\Templates\RecommendationRequirements.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

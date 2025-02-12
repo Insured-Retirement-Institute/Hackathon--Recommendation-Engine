@@ -58,7 +58,8 @@
     "esg_focus": string,
     "sector_tilts": {
         "sector_name": string
-    }
+    }.
+    "reason": string
 }
 3. Structural Requirements:
  - All sections must be present even if empty
@@ -113,8 +114,9 @@
  sector_tilts: "Overweight", "Neutral", or "Underweight"
  risk_profile: "Aggressive", "Moderate", or "Conservative"
  esg_focus: Null or specific focus area
+8. Reason
+ In the reason field, in 2-3 sentences and 50 words or less, give a reason why you made the recommendation.
 Remember: ALWAYS maintain this exact JSON structure. Every field must be present, even if null or 0. The response must be valid JSON that matches this schema exactly.
-
 
 
 

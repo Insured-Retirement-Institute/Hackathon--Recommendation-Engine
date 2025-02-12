@@ -24,7 +24,6 @@ public class RecommendationService(ITemplatesRepo templates, IConversationClient
         var recommendation = JsonSerializer.Deserialize<Recommendation>(recommendationJson)
             ?? new Recommendation();
 
-        var reason = await conversation.GetWhy(recommendationJson);
         var allocations = recommendation?.PortfolioAllocation?.AllSectors
             .SelectMany(s => s.Holdings)
             .Select(s => new AllocationModel
@@ -39,7 +38,7 @@ public class RecommendationService(ITemplatesRepo templates, IConversationClient
         var response = new RecommendationResponse
         {
             Allocations = allocations ?? [],
-            Reason = reason
+            Reason = recommendation?.Reason
         };
 
         return response;

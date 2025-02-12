@@ -60,8 +60,10 @@ public class Recommendation
         [JsonPropertyName("risk_profile")]
         public string? RiskProfile { get; set; }
 
-        [JsonPropertyName("")]
+        [JsonPropertyName("esg_focus")]
         public string? EsgFocus { get; set; }
-
     }
+
+    [JsonPropertyName("reason")]
+    public string Reason { get; set; }
 }
