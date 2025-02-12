@@ -11,7 +11,8 @@ public class TemplatesRepo : ITemplatesRepo
 
     public async Task<Template?> GetTemplate(string name)
     {
-        var fileRelativePath = $"Data\\Templates\\{name}.txt";
+        char slash = Path.DirectorySeparatorChar;
+        var fileRelativePath = $"Data{slash}Templates{slash}{name}.txt";
         var fullPath = Path.Combine(AppContext.BaseDirectory, fileRelativePath);
 
         if (!File.Exists(fullPath))
