@@ -9,6 +9,7 @@ namespace Services;
 public interface IRecommendationService
 {
     Task<RecommendationResponse> Get(RecommendationRequest request);
+    Task Save(UpdateTemplateRequest request);
 }
 
 public class RecommendationService(ITemplatesRepo templates, IConversationClient conversation) : IRecommendationService
@@ -40,5 +41,10 @@ public class RecommendationService(ITemplatesRepo templates, IConversationClient
         };
 
         return response;
+    }
+
+    public async Task Save(UpdateTemplateRequest request)
+    {
+        await templates.SaveTemplate(request.Name, request.Template);
     }
 }

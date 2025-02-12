@@ -1,18 +1,38 @@
-﻿namespace Data;
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Data;
 
 public interface ITemplatesRepo
 {
+    Task SaveTemplate(string name, string template);
     Task<Template?> GetTemplate(string name);
 }
 
 public class TemplatesRepo : ITemplatesRepo
 {
     //May replace with database
+    private readonly string _basePath;
+
+    public TemplatesRepo()
+    {
+        var slash = Path.DirectorySeparatorChar;
+        _basePath = $"Data{slash}Templates{slash}";
+    }
+
+    public async Task SaveTemplate(string name, string template)
+    {
+        var fileRelativePath = $"{_basePath}{name}.txt";
+        var fullPath = Path.Combine(AppContext.BaseDirectory, fileRelativePath);
+
+        if (File.Exists(fullPath))
+            File.Delete(fullPath);
+
+        await File.WriteAllTextAsync(fullPath, template);
+    }
 
     public async Task<Template?> GetTemplate(string name)
     {
-        char slash = Path.DirectorySeparatorChar;
-        var fileRelativePath = $"Data{slash}Templates{slash}{name}.txt";
+        var fileRelativePath = $"{_basePath}{name}.txt";
         var fullPath = Path.Combine(AppContext.BaseDirectory, fileRelativePath);
 
         if (!File.Exists(fullPath))

@@ -14,4 +14,11 @@ public class RecommendationController(IRecommendationService recommendations) : 
         var response = await recommendations.Get(request);
         return Ok(response);
     }
+
+    [HttpPut("template")]
+    public async Task<IActionResult> Save([FromBody]UpdateTemplateRequest request)
+    {
+        await recommendations.Save(request);
+        return Ok();
+    }
 }
