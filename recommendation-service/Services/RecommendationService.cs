@@ -17,13 +17,14 @@ public class RecommendationService(ITemplatesRepo templates, IConversationClient
     public async Task<RecommendationResponse> Get(RecommendationRequest request)
     {
         var system = await templates.GetTemplate("RecommendationRequirements")
-            ?? throw new Exception("Could not load questionare template");
+            ?? throw new Exception("Could not load questionare template.");
 
         var requestJson = JsonSerializer.Serialize(request);
         var recommendationJson = await conversation.Chat(requestJson, system.Build());
         var recommendation = JsonSerializer.Deserialize<Recommendation>(recommendationJson)
             ?? new Recommendation();
 
+        var reason = await conversation.GetWhy(recommendationJson);
         var allocations = recommendation?.PortfolioAllocation?.AllSectors
             .SelectMany(s => s.Holdings)
             .Select(s => new AllocationModel
@@ -37,7 +38,8 @@ public class RecommendationService(ITemplatesRepo templates, IConversationClient
 
         var response = new RecommendationResponse
         {
-            Allocations = allocations ?? []
+            Allocations = allocations ?? [],
+            Reason = reason
         };
 
         return response;

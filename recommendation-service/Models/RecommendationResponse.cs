@@ -6,6 +6,8 @@ public class RecommendationResponse
 {
     public List<AllocationModel> Allocations { get; set; }
 
+    public string Reason { get; set; }
+
     public class AllocationModel
     {
         public string AssetClass { get; set; }
