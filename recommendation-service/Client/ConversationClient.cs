@@ -6,16 +6,22 @@ namespace Client;
 
 public interface IConversationClient
 {
-    Task<string> Chat(string message);
+    Task<string> Chat(string message, string? system = null);
 }
 
 public class ConversationClient(IAmazonBedrockRuntime ai, ConversationOptions options) : IConversationClient
 {
-    public async Task<string> Chat(string message)
+    public async Task<string> Chat(string message, string? system = null)
     {
         var request = new ConverseRequest
         {
             ModelId = options.AiModelId,
+            System = [
+                new()
+                {
+                    Text = system
+                }
+            ],
             Messages =
             [
                 new() 

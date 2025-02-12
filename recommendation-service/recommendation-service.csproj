@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Data\Templates\RecommendationRequirements.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
 	<PackageReference Include="AWSSDK.Bedrock" Version="3.7.413.14" />
 	<PackageReference Include="AWSSDK.BedrockAgent" Version="3.7.416.7" />
 	<PackageReference Include="AWSSDK.BedrockAgentRuntime" Version="3.7.418.6" />

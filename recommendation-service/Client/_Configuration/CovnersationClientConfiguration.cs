@@ -1,5 +1,4 @@
 ﻿using Amazon.BedrockRuntime;
-using Amazon.Runtime.Internal.Util;
 
 namespace Client._Configuration;
 
